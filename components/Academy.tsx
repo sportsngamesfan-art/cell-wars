@@ -33,7 +33,7 @@ export default function Academy({
   onLab: () => void;
   onReward: () => void;
 }) {
-  const [topic, setTopic] = useState(topics[0].id),
+  const [topic, setTopic] = useState(()=>{if(typeof window==='undefined')return topics[0].id;const id=new URLSearchParams(window.location.search).get('topic');return id&&lessons[id]?id:topics[0].id}),
     [tab, setTab] = useState("lesson"),
     [progress, setProgress] = useState<Progress>({}),
     [loaded, setLoaded] = useState(false),
@@ -50,8 +50,6 @@ export default function Academy({
       const p = JSON.parse(safeGet("cell-wars-academy") || "{}");
       if (p && typeof p === "object") setProgress(p);
     } catch {}
-    const query = new URLSearchParams(window.location.search).get("topic");
-    if (query && lessons[query]) setTopic(query);
     setLoaded(true);
   }, []);
   useEffect(() => {
@@ -222,7 +220,7 @@ export default function Academy({
               key={topic + tab}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
+              exit={{ opacity: 0, pointerEvents: "none" }}
               transition={{ duration: 0.16 }}
             >
               {tab === "lesson" ? (

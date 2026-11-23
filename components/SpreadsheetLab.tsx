@@ -72,14 +72,10 @@ export default function SpreadsheetLab({
       const last = range[range.length - 1],
         row = +last.slice(1),
         col = last.charCodeAt(0);
-      const target =
-        row < 12
-          ? last[0] + (row + 1)
-          : col < 72
-            ? String.fromCharCode(col + 1) + row
-            : "";
+      const first=range[0], horizontal=first.slice(1)===last.slice(1);
+      const target=horizontal && col<72?String.fromCharCode(col+1)+row:row<12?first[0]+(row+1):'';
       if (!target) {
-        setStatus("Select a range with space for a total below it.");
+        setStatus("Select a range with space for a total to its right or below it.");
         return;
       }
       edit(target, `=SUM(${selected}:${end})`);

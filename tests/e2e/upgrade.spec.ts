@@ -109,6 +109,7 @@ for (const topic of topics)
   }) => {
     await page.goto("/library?topic=" + topic.id);
     await expect(page.locator(".lesson-banner h2")).toHaveText(topic.title);
+    await expect(page.locator('.lesson-rich')).toContainText(lessons[topic.id].explain[0]);
     await page.getByRole("button", { name: /Got it. Let me try/ }).click();
     await page
       .getByLabel("Your answer", { exact: true })
@@ -163,6 +164,9 @@ test("Formula Lab edits, recalculates, selects a range, undoes and persists", as
     .getByRole("button", { name: "Select G3", exact: true })
     .click({ modifiers: ["Shift"] });
   await expect(page.locator(".formula-bar>b")).toHaveText("B3:G3");
+  await page.getByRole('button',{name:'AutoSum',exact:true}).click();
+  await expect(page.locator('.formula-bar>b')).toHaveText('H3');
+  await expect(page.getByRole('button',{name:'Select G4',exact:true})).toHaveText('80');
   await page
     .getByRole("button", { name: "Merge & Center", exact: true })
     .click();
