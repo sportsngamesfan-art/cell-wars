@@ -12,6 +12,7 @@ The deployed baseline used a standalone HTML preview; its landing page advertise
 | --- | --- |
 | Learning Library contained short static notes and eight generic flashcards. | 13 full lessons, topic-specific flashcards, interactive examples, practice exercises, three-question checks, saved course progress and first-mastery XP. |
 | Lesson practice started a random full-bank quiz. | Academy practice targets the selected topic. |
+| Quest cards advertised eight questions even when a topic contained fewer. | Cards show the actual topic question count; introductory levels remain short and focused. |
 | Only seven playable modes, with an inaccurate landing count. | Eight modes including Streak Sprint; corrected landing count. |
 | Exam setup selected a question count but did not time the session. | Timed 20/30/50-question sessions with expiry scoring and reload-safe deadlines. |
 | Friend Challenge ignored incoming seeds and always used one fixed code. | Seeded URL handling, editable codes, new random challenges, deterministic questions and copyable links. |

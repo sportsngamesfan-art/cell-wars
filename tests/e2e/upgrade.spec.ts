@@ -44,7 +44,7 @@ async function answerQuiz(page: Page) {
 }
 for (const [mode, count] of [
   ["Quick Fire", 10],
-  ["Chapter Quest", 8],
+  ["Chapter Quest", 3],
   ["Exam Simulator", 20],
   ["Boss Battle", 15],
   ["Daily Challenge", 1],

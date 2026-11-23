@@ -787,15 +787,15 @@ export default function Experience() {
         {intro(
           "SCOREBOARD",
           "Your leaderboard.",
-          "Only real local scores appear here. Public class rankings will arrive with Supabase.",
+          "Your real scores, saved on this device. Keep practising to beat your personal best.",
         )}
         <div className="privacy-note">
           <Shield size={22} />
           <div>
-            <strong>Local-only, not a shared class leaderboard</strong>
+            <strong>Scores on this device</strong>
             <p>
-              We never fabricate classmates or rank unverified results. Scores
-              are stored in this browser until the database is added.
+              Your scores and progress stay in this browser. Compare Friend
+              Challenge results with classmates yourself.
             </p>
           </div>
         </div>
@@ -1051,7 +1051,7 @@ export default function Experience() {
                     ?.title.toUpperCase()}
                 </small>
                 <h3>{name}</h3>
-                <p>8 questions · +30 XP reward</p>
+                <p>{Math.min(8,questions.filter(q=>q.topicId===levelTopics[i]).length)} questions · +30 XP reward</p>
               </div>
               <button
                 disabled={!open}
@@ -1421,7 +1421,7 @@ export default function Experience() {
           </label>
           <label className="switch">
             <span>
-              Shared leaderboard <small>Available when Supabase is added</small>
+              Shared leaderboard <small>Coming later; scores currently stay on this device</small>
             </span>
             <input type="checkbox" checked={false} disabled readOnly />
           </label>
@@ -1489,7 +1489,7 @@ export default function Experience() {
         {intro(
           "FRIEND CHALLENGE",
           "Play the same questions.",
-          "Share a code with a classmate. Cross-device score comparison will require a database.",
+          "Share a code, play the same questions, then compare your scores. Each player keeps their own results.",
         )}
         <div className="panel friend-panel">
           <h2>Challenge code: CW-{seed}</h2>
