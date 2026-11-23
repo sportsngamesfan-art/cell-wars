@@ -324,7 +324,7 @@ function Answer({
   seed: number;
 }) {
   const options = useMemo(
-    () => shuffle(q.options || [], seed + q.id.length),
+    () => shuffle(q.options || [], seed + dailySeed(q.id)),
     [q, seed],
   );
   const [sequence, setSequence] = useState<string[]>([]);
