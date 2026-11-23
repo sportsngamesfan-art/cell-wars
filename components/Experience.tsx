@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Grid3X3,
@@ -515,8 +515,7 @@ function HeroArt() {
   );
 }
 export default function Experience() {
-  const router = useRouter(),
-    path = usePathname() || "/";
+  const path = usePathname() || '/';
   const [ready, setReady] = useState(false);
   const [user, setUser] = useState<UserState>(initialState);
   const [session, setSession] = useState<Session | null>(null);
@@ -579,7 +578,8 @@ export default function Experience() {
   }, [session?.id, session?.index]);
 
   const go = (p: string) => {
-    router.push(p);
+    // Every view shares this client experience; native history preserves quiz state.
+    window.history.pushState(null, '', p);
     setMobileNav(false);
     window.scrollTo(0, 0);
   };

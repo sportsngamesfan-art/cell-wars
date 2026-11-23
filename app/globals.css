@@ -2979,3 +2979,6 @@ h3 {
     scroll-behavior: auto !important;
   }
 }
+
+/* Allow the premium navigation to remain sticky during long lessons. */
+.app{overflow-x:clip;overflow-y:visible}

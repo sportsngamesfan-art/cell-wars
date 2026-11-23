@@ -3,6 +3,9 @@ on:
   push:
     branches: [feat/academy-upgrade]
   pull_request:
+concurrency:
+  group: cell-wars-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:

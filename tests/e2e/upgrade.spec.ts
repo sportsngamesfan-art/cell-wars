@@ -49,7 +49,7 @@ for (const [mode, count] of [
   ["Streak Sprint", 20],
 ] as const) {
   test(`${mode} completes and saves accurate results`, async ({ page }) => {
-    test.setTimeout(180000);
+    test.setTimeout(90000);
     await page.goto("/modes");
     await page.getByRole("button", { name: new RegExp(mode) }).click();
     if (mode === "Chapter Quest")
