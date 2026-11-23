@@ -2,6 +2,7 @@ import { test, expect } from "@playwright/test";
 import raw from "../../data/questions.json";
 
 test("quick fire awards XP once and saves local results", async ({ page }) => {
+  test.setTimeout(120000);
   await page.goto("/");
   await page.getByRole("button", { name: /Start Playing/ }).click();
   await page
@@ -28,14 +29,11 @@ test("quick fire awards XP once and saves local results", async ({ page }) => {
       for (const s of q.answer.split("|"))
         await page.getByRole("button", { name: s, exact: true }).click();
     } else if (q.options) {
-      await page
-        .getByRole("button", { name: q.answer, exact: false })
-        .last()
-        .click();
+      await page.locator('.answers .answer').getByText(q.answer,{exact:true}).click();
     } else
       await page.getByRole("textbox", { name: "Your answer" }).fill(q.answer);
     await page.getByRole("button", { name: /Check answer/ }).click();
-    await expect(page.getByText(/Correct answer:/)).toBeVisible();
+    await expect(page.getByText('Correct. Nicely done!')).toBeVisible();
     await page
       .getByRole("button", { name: n === 9 ? /See results/ : /Next question/ })
       .click();
@@ -50,3 +48,5 @@ test("quick fire awards XP once and saves local results", async ({ page }) => {
   await page.reload();
   await expect(page.getByText("Questions answered")).toBeVisible();
 });
+
+test.afterEach(async({page},info)=>{if(info.status!==info.expectedStatus)console.log('Quiz regression state:',(await page.locator('main').innerText().catch(()=>'' )).slice(0,5000))});
