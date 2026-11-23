@@ -1,0 +1,67 @@
+[
+  {
+    "id": "spreadsheet",
+    "title": "Introduction",
+    "description": "Definition, uses and Microsoft Excel."
+  },
+  {
+    "id": "features",
+    "title": "Features",
+    "description": "Formulas, functions, formatting, recalc, replace, Auto Fill and charts."
+  },
+  {
+    "id": "starting",
+    "title": "Starting Excel",
+    "description": "Start \u2192 All apps \u2192 Excel \u2192 Blank workbook."
+  },
+  {
+    "id": "workbooks",
+    "title": "Workbook & worksheet",
+    "description": "Book1, Sheet1, rows, columns and notebook analogy."
+  },
+  {
+    "id": "components",
+    "title": "Interface anatomy",
+    "description": "Cells, ranges, Name Box, Formula Bar, headings and Status Bar."
+  },
+  {
+    "id": "navigation",
+    "title": "Navigation",
+    "description": "Arrow keys, Page Up/Down, Ctrl + Home and Ctrl + End."
+  },
+  {
+    "id": "entry",
+    "title": "Entering data",
+    "description": "Weekly Expenses example, editing and Merge & Center."
+  },
+  {
+    "id": "data",
+    "title": "Data types",
+    "description": "Numbers, text and formulas."
+  },
+  {
+    "id": "formulas",
+    "title": "Formulas",
+    "description": "Arithmetic operators and cell references."
+  },
+  {
+    "id": "functions",
+    "title": "Functions",
+    "description": "SUM, AVERAGE, COUNT, MAX, MIN and AutoSum."
+  },
+  {
+    "id": "management",
+    "title": "Worksheet management",
+    "description": "Add, delete, rename and switch sheets."
+  },
+  {
+    "id": "saving",
+    "title": "Saving & shortcuts",
+    "description": "Save As, .xlsx and essential shortcuts."
+  },
+  {
+    "id": "facts",
+    "title": "Important facts",
+    "description": "VisiCalc and worksheet background."
+  }
+]
