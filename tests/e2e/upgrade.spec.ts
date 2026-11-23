@@ -36,7 +36,11 @@ async function answerQuiz(page: Page) {
     .getByRole("button", { name: "Check answer", exact: false })
     .click();
   await expect(page.getByText("Correct. Nicely done!")).toBeVisible();
-  await page.getByRole("button", { name: /Next question|See results/ }).click();
+  const advance=page.getByRole('button',{name:/Next question|See results/});
+  const last=(await advance.innerText()).includes('See results');
+  await advance.click();
+  if(last)await expect(page.getByText('SESSION COMPLETE')).toBeVisible();
+  else await expect(page.locator('.question-panel h1')).not.toHaveText(prompt);
 }
 for (const [mode, count] of [
   ["Quick Fire", 10],

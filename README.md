@@ -31,4 +31,4 @@ No database, authentication, global leaderboard, or cross-device progress syncin
 
 The lab intentionally models an 8-column × 12-row worksheet, not all of Excel. Merge & Center simulates the textbook title across A1:H1 while preserving D1. Supported functions accept numeric arguments and cell ranges; macros, files, charts and full Excel formula syntax are outside this learning simulator. Unsupported formulas return explicit errors.
 
-Windows desktop Excel shortcuts are labelled; platform versions may differ. The course is based on the existing supplied curriculum. No production deployment is performed by this upgrade.
+Windows desktop Excel shortcuts are labelled; platform versions may differ. The course is based on the existing supplied curriculum. The upgrade remains on a dedicated preview branch; the original production website is unchanged.

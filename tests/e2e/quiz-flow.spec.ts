@@ -39,6 +39,7 @@ test("quick fire awards XP once and saves local results", async ({ page }) => {
     await page
       .getByRole("button", { name: n === 9 ? /See results/ : /Next question/ })
       .click();
+    if(n<9)await expect(page.locator('.question-panel h1')).not.toHaveText(prompt);
   }
   await expect(page.getByText("SESSION COMPLETE")).toBeVisible();
   await page
