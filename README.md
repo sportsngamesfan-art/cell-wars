@@ -1,35 +1,34 @@
 # CELL WARS — The Spreadsheet Challenge
 
-A premium, local-first ICSE Class 7 spreadsheet quiz game. **Database features are intentionally deferred.** No Supabase project, authentication or globally shared leaderboard is required for this phase.
+An upgrade to the original Next.js CELL WARS project for ICSE Class 7 spreadsheet revision. The original 180-question curriculum bank is preserved unchanged in `data/questions.json`. The original source is retained on `main`; the upgrade lives on `feat/academy-upgrade`.
 
-## Run
+## Run and verify
 
-```bash
-npm install
+Use Node.js 22 or 24.
+
+```sh
+npm ci
 npm run dev
-npm run lint
-npm run test
-npm run build
+npm run check
+npm run test:bank
+npx playwright install chromium
+npm run test:e2e
 ```
 
-Visit http://localhost:3000. Deploy on Vercel using the Next.js preset. No environment variables are required.
+The browser suite uses the production build (`npm run build` first). Set `BASE_URL` to test a hosted deployment. `CHROMIUM_PATH` is an optional custom browser executable. GitHub Actions runs the unit tests, curriculum validator, production build, and desktop/mobile browser tests.
 
-## Current functionality
+## What works
 
-- 180 curriculum-based questions, each with one answer and explanation, 35/65/55/25 by difficulty.
-- Quick Fire, Chapter Quest, Exam Simulator, Boss Battle, Daily Challenge and Revision Rescue.
-- Interactive spreadsheet formulas, SUM/AVERAGE/COUNT/MAX/MIN, live cell selection and AutoSum.
-- Local XP, rewards, results and study guide; nickname and settings stored only in this browser.
-- Local-only leaderboard, clearly labeled. **Not** a public class leaderboard.
+- 13-topic Learning Academy: explanations, textbook recaps, interactive diagrams, formula demonstrations, sheet management demonstration, practice exercises, per-topic flashcards, three-question mastery checks and local course progress. First mastery earns 25 XP. Two supplemental academy questions fill gaps without modifying the 180-question bank.
+- Eight modes: Quick Fire, Chapter Quest, timed Exam Simulator (20/30/50 questions), Boss Battle, Daily Challenge, Revision Rescue, Friend Challenge, and Streak Sprint.
+- XP, player levels, achievements, question hints, answer explanations, resumable sessions, results, and topic revision links.
+- Formula Lab: editable values through the formula bar; cell references; arithmetic and parentheses; SUM, AVERAGE, COUNT, MAX, MIN; range selection by drag or Shift-click; AutoSum; undo; simulated Merge & Center; a seven-row Weekly Expenses challenge; automatic recalculation; local worksheet persistence.
+- Responsive layouts, keyboard navigation, reduced-motion support, optional synthesized answer sounds, and no external image or font requests.
 
-## Planned backend phase
+## Boundaries
 
-Add Supabase Auth and PostgreSQL tables, RLS, opt-in aggregated rankings, server-authoritative question delivery and grading, atomic XP events and replay protection. Client-side score calculation in this demo **is not tamper-resistant** and must never be reused for shared leaderboards.
+No database, authentication, global leaderboard, or cross-device progress syncing. The leaderboard shows only this browser's player; Friend Challenge shares a deterministic set of questions, and students compare their results themselves. Browser-local progress is editable and is not suitable for competitive, tamper-resistant rankings.
 
-## Safety and privacy
+The lab intentionally models an 8-column × 12-row worksheet, not all of Excel. Merge & Center simulates the textbook title across A1:H1 while preserving D1. Supported functions accept numeric arguments and cell ranges; macros, files, charts and full Excel formula syntax are outside this learning simulator. Unsupported formulas return explicit errors.
 
-No email, phone, birth date or location required. Data stays in the device's localStorage, and Settings lets students delete it. No messages or public profiles.
-
-## Curriculum notes
-
-Uses the user-provided Class 7 ICSE 'Introduction to Spreadsheet' material (pages 55–61). The sample's row numbering is B3:G3 for Eatables, with H3 as the total; H4 represents Cold Drink.
+Windows desktop Excel shortcuts are labelled; platform versions may differ. The course is based on the existing supplied curriculum. The upgrade remains on a dedicated preview branch; the original production website is unchanged.
